@@ -21,7 +21,7 @@ function ArticleById() {
   const [currentArticle, setCurrentArticle] = useState(state);
   const [commentStatus, setCommentStatus] = useState('');
   const [commentReport, setCommentReport] = useState('');
-
+  const BACKEND_URL= import.meta.env.VITE_BACKEND_URL;
   useEffect(() => {
     if (editArticleStatus) {
       setValue('title', currentArticle.title);
@@ -46,7 +46,7 @@ function ArticleById() {
       modifiedArticleAfterChanges.dateOfModification = new Date().toLocaleDateString();
 
       const res = await axios.put(
-        `http://localhost:3000/author-api/article/${modifiedArticleAfterChanges.articleId}`,
+        `${BACKEND_URL}/author-api/article/${modifiedArticleAfterChanges.articleId}`,
         modifiedArticleAfterChanges,
         {
           headers: {
@@ -76,7 +76,7 @@ function ArticleById() {
       const updatedArticle = { ...currentArticle, isArticleActive: false };
 
       const res = await axios.put(
-        `http://localhost:3000/author-api/articles/${currentArticle.articleId}`,
+        `${BACKEND_URL}/author-api/articles/${currentArticle.articleId}`,
         updatedArticle,
         {
           headers: {
@@ -104,7 +104,7 @@ function ArticleById() {
       const updatedArticle = { ...currentArticle, isArticleActive: true };
 
       const res = await axios.put(
-        `http://localhost:3000/author-api/articles/${currentArticle.articleId}`,
+        `${BACKEND_URL}/author-api/articles/${currentArticle.articleId}`,
         updatedArticle,
         {
           headers: {
@@ -125,7 +125,7 @@ function ArticleById() {
     commentObj.nameOfUser=currentUser.firstName;
     console.log(commentObj)
     //http put request to modify the article by adding the comment
-    let res=await axios.put(`http://localhost:3000/user-api/comment/${currentArticle.articleId}`,commentObj)
+    let res=await axios.put(`${BACKEND_URL}/user-api/comment/${currentArticle.articleId}`,commentObj)
     if(res.data.message==="comment added"){
      setCommentStatus(res.data.message)
      setCurrentArticle(res.data.payload)
@@ -139,7 +139,7 @@ function ArticleById() {
        console.error('Authentication token missing');
        return;
      }
-   const res=await axios.delete(`http://localhost:3000/user-api/comment/${currentArticle.articleId}/${commentId}`,{
+   const res=await axios.delete(`${BACKEND_URL}/user-api/comment/${currentArticle.articleId}/${commentId}`,{
      headers:{
        Authorization:`Bearer ${token}`
      },

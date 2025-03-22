@@ -10,11 +10,11 @@ function Users() {
     const [error, setError] = useState('');
     const { getToken } = useAuth();
     const { currentUser } = useContext(userAuthorContextobj);
-
+    const BACKEND_URL= import.meta.env.VITE_BACKEND_URL;
     async function getUsers() {
         try {
             const token = await getToken();
-            const res = await axios.get('http://localhost:3000/admin-api/users', {
+            const res = await axios.get(`${BACKEND_URL}/admin-api/users`, {
                 headers: { Authorization: `Bearer ${token}` }
             });
 
@@ -31,7 +31,7 @@ function Users() {
 
     async function blockUsers(email) {
         try {
-            const blockRes = await axios.put(`http://localhost:3000/admin-api/block/${email}`);
+            const blockRes = await axios.put(`${BACKEND_URL}/admin-api/block/${email}`);
             if (blockRes.data.message === "User blocked") {
                 alert(`${email} has been blocked.`);
                 await getUsers();  // Ensure users are refreshed
@@ -46,7 +46,7 @@ function Users() {
 
     async function unblockUsers(email) {
         try {
-            const unblockRes = await axios.put(`http://localhost:3000/admin-api/unblock/${email}`);
+            const unblockRes = await axios.put(`${BACKEND_URL}/admin-api/unblock/${email}`);
             if (unblockRes.data.message === "User unblocked") {
                 alert(`${email} has been unblocked.`);
                 await getUsers();  // Ensure users are refreshed

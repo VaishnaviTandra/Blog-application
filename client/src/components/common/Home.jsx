@@ -16,6 +16,7 @@ function Home() {
   const { isSignedIn, user, isLoaded } = useUser()
   const [error, setError] = useState('')
   const navigate = useNavigate()
+  const BACKEND_URL= import.meta.env.VITE_BACKEND_URL;
   const [selectedRole, setSelectedRole] = useState("");
   const adminEmail = "pranavimanthena3@gmail.com"
 
@@ -43,9 +44,9 @@ function Home() {
   
     try {
       const endpointMap = {
-        author: "http://localhost:3000/author-api/author",
-        user: "http://localhost:3000/user-api/user",
-        admin: "http://localhost:3000/admin-api/admin",
+        author: `${BACKEND_URL}/author-api/author`,
+        user: `${BACKEND_URL}/user-api/user`,
+        admin: `${BACKEND_URL}/admin-api/admin`,
       };
   
       const url = endpointMap[role];

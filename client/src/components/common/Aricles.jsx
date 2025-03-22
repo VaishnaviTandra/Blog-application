@@ -11,7 +11,7 @@ function Articles() {
   const [categories] = useState(["All", "Technology", "Health", "Business", "Travel", "Education"]);
   const [selectCat, setSelectCat] = useState("All");
   const [isLoading, setIsLoading] = useState(true);
-  
+  const BACKEND_URL= import.meta.env.VITE_BACKEND_URL;
   const navigate = useNavigate();
   const { getToken } = useAuth();
 
@@ -23,7 +23,7 @@ function Articles() {
     console.log("Selected Category:", selectCat);
 
     try {
-      let res = await axios.get(`http://localhost:3000/author-api/articles/${selectCat}`, {
+      let res = await axios.get(`${BACKEND_URL}/author-api/articles/${selectCat}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
 
