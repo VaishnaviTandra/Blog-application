@@ -1,0 +1,114 @@
+/* General Styling */
+body {
+
+  color: white; /* Makes text white */
+  font-family: "Poppins", sans-serif;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Ensure full height */
+}
+
+/* Background Lottie Animation */
+.background-lottie {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1; /* Push behind content */
+  opacity: 0.5; /* Adjust transparency */
+  pointer-events: none; /* Prevent blocking interactions */
+}
+
+/* Floating Animated Elements */
+.floating-shape {
+  position: absolute;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  animation: float 6s infinite ease-in-out;
+}
+
+.floating-shape-1 {
+  width: 100px;
+  height: 100px;
+  top: 20%;
+  left: 10%;
+}
+
+.floating-shape-2 {
+  width: 80px;
+  height: 80px;
+  bottom: 10%;
+  right: 15%;
+}
+
+.floating-shape-3 {
+  width: 120px;
+  height: 120px;
+  top: 50%;
+  left: 50%;
+}
+
+/* Floating Animation */
+@keyframes float {
+  0% {
+      transform: translateY(0px);
+  }
+  50% {
+      transform: translateY(-20px);
+  }
+  100% {
+      transform: translateY(0px);
+  }
+}
+
+/* Content Styling */
+.content-container {
+  max-width: 800px;
+  margin: 100px auto;
+  text-align: center;
+  flex-grow: 1; /* Push footer down */
+}
+
+.heading {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.description {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  color: white;
+}
+
+.sub-heading {
+  font-size: 1.5rem;
+  margin-top: 20px;
+  font-weight: bold;
+}
+
+.blog-types {
+  list-style-type: none;
+  padding: 0;
+  font-size: 1.1rem;
+}
+
+.blog-types li {
+  margin: 10px 0;
+}
+
+/* Ensure Footer Stays at Bottom */
+.footer-container {
+  margin-top: auto;
+  width: 100%;
+ 
+  text-align: center;
+  padding: 10px 0;
+  color: white;
+}
+@media (max-width: 1000px) {
+  .blogimg {
+    display: none !important;
+  }
+}

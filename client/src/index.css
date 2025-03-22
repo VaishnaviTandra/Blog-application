@@ -1,0 +1,394 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,100..900;1,100..900&family=Oswald:wght@200..700&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Oswald", serif;
+}
+
+:root {
+    --royal-blue: #002349;
+    --blue: #96C2DB;
+    --grey: #E5EDF1;
+    --white: #FFFFFF;
+    --cream: #FFFDF2;
+    --white-smoke: #F0F0F0;
+    --bright-red: #E7473C;
+}
+
+/* ====== BODY STYLING ====== */
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Ensures full viewport height */
+    background: linear-gradient(45deg, #002349, #6D97B5);
+    background-size: 400% 400%;
+    animation: backgroundAnimation 10s ease infinite;
+    overflow-x: hidden;
+}
+
+main {
+    flex-grow: 1; /* Ensures content pushes footer to the bottom */
+}
+
+/* ====== HEADER STYLING ====== */
+.header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: linear-gradient(to right, #1a1a1a, #4e3b31);
+    width: 100%;
+    padding: 1rem 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 0 0 15px 15px;
+    box-shadow: 0px 4px 15px rgba(78, 59, 49, 0.7);
+    backdrop-filter: blur(10px);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.header:hover {
+    background: linear-gradient(to right, #2e2e2e, #5e4d39);
+    box-shadow: 0px 6px 20px rgba(78, 59, 49, 0.9);
+}
+
+.header-text-quote {
+    color: #ffcc00;
+    font-size: 1.6rem;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+}
+
+.nav-links a {
+    color: #f0f0f0;
+    text-decoration: none;
+    font-size: 1.1rem;
+    margin: 0 1.5rem;
+    padding: 0.5rem 0;
+    transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.nav-links a:hover {
+    color: #ffcc00;
+    transform: scale(1.05);
+}
+
+.nav-links a:active {
+    color: #e5c100;
+}
+.mobile-menu-icon {
+    display: none; /* Hidden on larger screens */
+    cursor: pointer;
+  }
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        padding: 1rem 2%;
+    }
+
+    .nav-links {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 1rem;
+    }
+
+    .nav-links a {
+        margin: 0.5rem 0;
+    }
+
+    .header-text-quote {
+        font-size: 1.4rem;
+        text-align: center;
+        margin-top: 1rem;
+    }
+}
+@media (max-width: 1000px) {
+    .blogimg {
+  width:75%;
+    }
+  }
+  @media (max-width: 990px) {
+    .welcome-animation {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center; /* Ensure text aligns properly */
+      margin: 0 auto;
+    }
+    /* .blogimg {
+        width:50%;
+        margin-bottom: 20px;
+          } */
+          .blog-container {
+            display: flex !important;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 20px; /* Adds spacing */
+        }
+    
+        .blogimg {
+            width: 50%; 
+            max-width: 400px;
+            margin-top: 10px;
+            margin-bottom: 50px;
+        }
+  }
+  @media (max-width: 900px) {
+    .blogimg {
+        display: none !important;
+    }
+}
+@media (max-width: 600px) {
+    .blog-text {
+        display: none !important;
+    }
+}
+@media (max-width: 500px) {
+    .welcome-animation {
+        width: 250px !important;
+        /* height: 180px !important; */
+    }
+}
+@media (max-width: 500px) {
+    .me-4 {
+        display: none;
+    }
+
+    /* Hide the Role column on screens smaller than 500px */
+    .role-column {
+        display: none;
+    }
+
+    /* Hide the Email column on screens smaller than 400px */
+    .status-column {
+        display: none;
+    }
+}
+
+@media (max-width: 400px) {
+    /* Hide the Profile column on screens smaller than 400px */
+    .profile-column {
+        display: none;
+    }
+}
+@media (max-width: 700px) {
+    .footer-section:last-child {
+      display: none;
+    }
+    .footer-content {
+        gap: 5px; /* Tighter spacing */
+      }
+    
+      
+  }
+  @media (max-width: 580px) {
+    .footer-section:nth-child(3) { /* "Help" section */
+      display: none;
+    }
+  }
+  @media (max-width: 450px) {
+    .footer-section:nth-child(2) { /* "Resources" section */
+      display: none;
+    }
+    .footer-section:first-child { /* "Information" section */
+        width: 100%;
+        text-align: center;
+      }
+  }
+  @media (max-width: 500px) {
+    /* Hide navigation links */
+    .header {
+        flex-direction: column;
+        padding: 1rem 2%;
+    }
+
+    /* Hide navigation links initially */
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        position: absolute;
+        top: 60px; /* Ensure it appears below header */
+        left: 0;
+        background: rgba(26, 26, 26, 0.95);
+        padding: 15px 0;
+        border-radius: 0 0 15px 15px;
+        box-shadow: 0px 6px 20px rgba(78, 59, 49, 0.9);
+    }
+
+    .nav-links a {
+        color: white; /* Ensure text remains white */
+        margin: 10px 0;
+        font-size: 1rem;
+    }
+
+    /* Show menu icon */
+    .mobile-menu-icon {
+        display: block;
+    }
+
+    /* When menu is open, display all links in flex inside the header */
+    .nav-links.show-menu {
+        display: flex;
+    }
+    .mobile-nav{
+        /* display: flex; */
+        text-decoration: none;
+       
+    }
+    .nav-link{
+        margin-right: 2px;
+    }
+  }
+  @media (max-width: 550px) {
+    .signin-animation {
+        display: none;
+    }
+
+    .signin-container {
+        justify-content: center; /* Center form when animation is hidden */
+    }
+}
+@media (max-width: 400px) {
+    .signin-form {
+        width: 100%; 
+        justify-content: center;
+        max-width: 320px;
+    }
+}
+@media (max-width: 330px) {
+    .signin-form {
+        max-width: 315px; /* Set max-width to 315px */
+    }
+}
+@media(max-width:770px){
+    .modification{
+        display:none;
+    }
+    .ctitle{
+        justify-content: center;
+    }
+}
+@media(max-width:465px){
+    .creation{
+        display:none;
+    }
+    .ctitle{
+        align-items: center;
+        justify-content: center;
+        margin-top: 30px;
+    }
+}
+@media(max-width:400px){
+    .cprofile{
+        display: none;
+    }
+}
+@media(max-width:328px){
+    .ccomment{
+        display:none;
+    }
+}
+@media(max-width:340px){
+    .cuser{
+        display:none;
+    }
+}
+@media(max-width:1000px){
+    .cedit{
+        width:50%;
+        height: 50%;
+    }
+}
+@media(max-width:520px){
+    .cprofile{
+        margin-left: 10px;
+    }
+}
+@media(max-width:370px){
+   
+    .form-select{
+        width:25%;
+        height: 25%;
+        /* font-size: 0.2rem; */
+    }
+   .form-label{
+    font-size: 10px;
+   }
+}
+/* ====== FOOTER FIXES ====== */
+.footer-container {
+    width: 90vw;
+    margin: 40px auto 0; /* Ensures it's not hidden */
+    padding: 30px 0;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    z-index: 10; /* Prevents overlapping */
+}
+
+.footer {
+    width: 100%;
+    background: linear-gradient(to right, #1a1a1a, #4e3b31);
+    border-radius: 15px;
+    box-shadow: 0px 4px 15px rgba(78, 59, 49, 0.7);
+    padding: 30px;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+    padding: 10px 20px;
+    flex-wrap: wrap;
+}
+
+.footer-section {
+    flex: 1;
+    text-align: left;
+    padding: 0 20px;
+    margin-bottom: 20px;
+}
+
+.footer-section h3 {
+    font-family: "Oswald", sans-serif;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 1rem;
+}
+
+.footer-section p {
+    color: #bbb;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    font-family: "Inter", sans-serif;
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 0.9rem;
+    color: #fff;
+}
+
+/* ====== BACKGROUND ANIMATION ====== */
+@keyframes backgroundAnimation {
+    0% {
+        background-position: 0% 0%;
+    }
+    50% {
+        background-position: 100% 100%;
+    }
+    100% {
+        background-position: 0% 0%;
+    }
+}
+.form-select{
+    width: 25%;
+}
